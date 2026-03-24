@@ -135,9 +135,11 @@ function normalizeUser(user) {
     return null
   }
 
+  const { id, _id } = user
+
   return {
     ...user,
-    id: user.id || user._id,
+    id: id || _id,
   }
 }
 
@@ -146,9 +148,11 @@ function normalizeMessage(message) {
     return null
   }
 
+  const { id, _id, localId } = message
+
   return {
     ...message,
-    id: message.id || message._id || message.localId,
+    id: id || _id || localId,
   }
 }
 
@@ -157,9 +161,11 @@ function normalizeTransaction(transaction) {
     return null
   }
 
+  const { id, _id } = transaction
+
   return {
     ...transaction,
-    id: transaction.id || transaction._id,
+    id: id || _id,
   }
 }
 
@@ -512,10 +518,14 @@ export function AppProvider({ children }) {
   }
 
   async function login(credentials) {
+    const email = typeof credentials?.email === 'string' ? credentials.email.trim() : ''
+    const password = credentials?.password
+    const username = typeof credentials?.username === 'string' ? credentials.username.trim() : ''
+
     try {
       const response = await api.post('/auth/login', {
-        email: credentials.email.trim(),
-        password: credentials.password,
+        email,
+        password,
       })
 
       const token = response.data?.token
@@ -525,7 +535,7 @@ export function AppProvider({ children }) {
         return { ok: false, error: 'The server returned an invalid token.' }
       }
 
-      const fallbackUsername = credentials.username?.trim() || credentials.email.trim().split('@')[0]
+      const fallbackUsername = username || email.split('@')[0]
 
       setSession((current) => mergeSession(
         {
@@ -535,7 +545,7 @@ export function AppProvider({ children }) {
         {
           token,
           userId: decodedToken.userId,
-          email: credentials.email.trim(),
+          email,
           username: fallbackUsername,
           displayName: fallbackUsername,
         },
@@ -555,21 +565,25 @@ export function AppProvider({ children }) {
   }
 
   async function register(credentials) {
+    const username = typeof credentials?.username === 'string' ? credentials.username.trim() : ''
+    const email = typeof credentials?.email === 'string' ? credentials.email.trim() : ''
+    const password = credentials?.password
+
     try {
       await api.post('/auth/register', {
-        username: credentials.username.trim(),
-        email: credentials.email.trim(),
-        password: credentials.password,
+        username,
+        email,
+        password,
       })
 
-      const result = await login(credentials)
+      const result = await login({ username, email, password })
 
       if (result.ok) {
         setHasRegistered(true)
 
         setSession((current) => mergeSession(current, {
-          username: credentials.username.trim(),
-          displayName: current.displayName || credentials.username.trim(),
+          username,
+          displayName: current.displayName || username,
         }))
 
         setActivity((current) => [
@@ -608,7 +622,8 @@ export function AppProvider({ children }) {
 
   async function loadConversation(contactId, options = {}) {
     const targetId = contactId?.trim()
-    const shouldMarkAsRead = options?.markAsRead !== false
+    const { markAsRead = true } = options
+    const shouldMarkAsRead = markAsRead !== false
 
     if (!isAuthenticated || !targetId) {
       return { ok: false, error: 'Sign in and choose a conversation.' }
@@ -729,7 +744,8 @@ export function AppProvider({ children }) {
         })
       }
 
-      const contactLabel = resolveContact(targetId)?.alias || resolveContact(targetId)?.username || targetId
+      const resolvedContact = resolveContact(targetId)
+      const contactLabel = resolvedContact?.alias || resolvedContact?.username || targetId
       const activityDetail = resolvedMessageText || fallbackText
       setActivity((current) => [
         createActivity('message', `Message to ${contactLabel}`, activityDetail, { contactId: targetId }),
@@ -896,7 +912,8 @@ export function AppProvider({ children }) {
 
       await refreshTransactions()
 
-      const contactLabel = resolveContact(targetId)?.alias || resolveContact(targetId)?.username || targetId
+      const resolvedContact = resolveContact(targetId)
+      const contactLabel = resolvedContact?.alias || resolvedContact?.username || targetId
       const detail = trimmedNote
         ? `${numericAmount} sent to ${contactLabel}. ${trimmedNote}`
         : `${numericAmount} sent to ${contactLabel}.`
@@ -1233,8 +1250,9 @@ export function AppProvider({ children }) {
   }
 
   function addManualContact({ id, name, email }) {
-    const contactId = id.trim()
-    const contactName = name.trim()
+    const contactId = typeof id === 'string' ? id.trim() : ''
+    const contactName = typeof name === 'string' ? name.trim() : ''
+    const contactEmail = typeof email === 'string' ? email.trim() : ''
 
     if (!contactId || !contactName) {
       return { ok: false, error: 'Add both a recipient ID and a label.' }
@@ -1244,7 +1262,7 @@ export function AppProvider({ children }) {
       id: contactId,
       username: contactName,
       alias: contactName,
-      email: email.trim(),
+      email: contactEmail,
       source: 'manual',
       pinnedAt: new Date().toISOString(),
     }

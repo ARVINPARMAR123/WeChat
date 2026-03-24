@@ -1,7 +1,7 @@
 import { useDeferredValue, useState } from 'react'
-import { useAppContext } from '../context/AppContext.jsx'
-import { formatCurrency, formatDateTime } from '../lib/formatters.js'
-import useAutoDismissFeedback from '../lib/useAutoDismissFeedback.js'
+import { useAppContext } from '../../context/AppContext.jsx'
+import { formatCurrency, formatDateTime } from '../../lib/formatters.js'
+import useAutoDismissFeedback from '../../lib/useAutoDismissFeedback.js'
 import './PaymentsPage.css'
 
 function PaymentsPage() {

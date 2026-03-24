@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-import { buildInitials, formatTime, shortenId } from '../lib/formatters.js'
-import useAutoDismissFeedback from '../lib/useAutoDismissFeedback.js'
+import { buildInitials, formatTime, shortenId } from '../../lib/formatters.js'
+import useAutoDismissFeedback from '../../lib/useAutoDismissFeedback.js'
+import './ChatWindow.css'
 
 const PREFERRED_AUDIO_MIME_TYPES = [
   'audio/webm;codecs=opus',

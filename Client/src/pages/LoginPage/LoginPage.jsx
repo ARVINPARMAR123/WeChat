@@ -1,7 +1,7 @@
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-import { useAppContext } from '../context/AppContext.jsx'
-import useAutoDismissFeedback from '../lib/useAutoDismissFeedback.js'
+import { useAppContext } from '../../context/AppContext.jsx'
+import useAutoDismissFeedback from '../../lib/useAutoDismissFeedback.js'
 import './LoginPage.css'
 
 const INITIAL_FORM = {
@@ -92,3 +92,4 @@ function LoginPage() {
 }
 
 export default LoginPage
+

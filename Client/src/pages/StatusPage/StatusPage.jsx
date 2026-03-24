@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { useAppContext } from '../context/AppContext.jsx'
-import { formatRelativeTime } from '../lib/formatters.js'
-import useAutoDismissFeedback from '../lib/useAutoDismissFeedback.js'
+import { useAppContext } from '../../context/AppContext.jsx'
+import { formatRelativeTime } from '../../lib/formatters.js'
+import useAutoDismissFeedback from '../../lib/useAutoDismissFeedback.js'
 import './StatusPage.css'
 
 const MAX_IMAGE_BYTES = 900 * 1024

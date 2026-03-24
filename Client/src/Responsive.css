@@ -1,0 +1,583 @@
+/* ============================================
+   RESPONSIVE DESIGN - COMMON ELEMENTS
+   ============================================ */
+
+@media (max-width: 1500px) {
+	.topbar-main {
+		grid-template-columns: minmax(0, 1fr) auto;
+	}
+}
+
+@media (max-width: 1280px) {
+	.topbar-main {
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 12px;
+	}
+
+	.side-column {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.session-chip {
+		justify-self: end;
+	}
+
+	.detail-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 900px) {
+	.app-shell {
+		padding: 16px;
+	}
+
+	.topbar {
+		padding: 14px;
+	}
+
+	.stats-row {
+		grid-template-columns: 1fr;
+	}
+
+	.session-chip {
+		flex-wrap: wrap;
+	}
+
+	.nav-tabs {
+		gap: 15px;
+	}
+
+	.side-column {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 768px) {
+	:root {
+		font-size: 15px;
+	}
+
+	.app-shell {
+		padding: 8px 14px 12px 14px;
+	}
+
+	.app-frame {
+		gap: 12px;
+	}
+
+	.content-shell {
+		gap: 0;
+	}
+
+	.page-section {
+		gap: 0;
+	}
+
+	.topbar {
+		padding: 12px;
+		gap: 12px;
+		top: 8px;
+	}
+
+	.topbar-main {
+		gap: 12px;
+	}
+
+	.brand-mark {
+		width: 48px;
+		height: 48px;
+		font-size: 0.95rem;
+	}
+
+	.brand-block h1 {
+		font-size: 1.2rem;
+	}
+
+	.brand-title {
+		font-size: 1.6rem;
+	}
+
+	.search-shell {
+		min-width: 180px;
+	}
+
+	.session-chip {
+		padding: 7px 9px;
+		gap: 8px;
+	}
+
+	.session-meta strong {
+		font-size: 0.88rem;
+	}
+
+	.session-meta span {
+		font-size: 0.78rem;
+	}
+
+	.nav-link {
+		width: 36px;
+		height: 36px;
+		font-size: 0.95rem;
+		border-radius: 12px;
+	}
+
+	.panel {
+		padding: 15px;
+		gap: 12px;
+		border-radius: 18px;
+	}
+
+	.detail-grid {
+		gap: 12px;
+	}
+
+	.stat-card {
+		padding: 14px;
+	}
+
+	.stat-card h3 {
+		font-size: 1.7rem;
+	}
+
+	.stat-card p {
+		font-size: 0.85rem;
+	}
+
+	.contact-card {
+		padding: 11px;
+		gap: 9px;
+		border-radius: 12px;
+	}
+
+	.primary-button,
+	.secondary-button {
+		padding: 11px 14px;
+		font-size: 0.9rem;
+		border-radius: 12px;
+	}
+
+	.toggle-chip,
+	.ghost-button {
+		padding: 8px 12px;
+		font-size: 0.88rem;
+	}
+
+	.ghost-button.compact {
+		padding: 7px 10px;
+		font-size: 0.8rem;
+	}
+
+	.text-button {
+		font-size: 0.76rem;
+	}
+
+	.nav-tabs {
+		gap: 15px;
+	}
+}
+
+@media (max-width: 640px) {
+	:root {
+		font-size: 14px;
+	}
+
+	body {
+		line-height: 1.4;
+	}
+
+	.app-shell {
+		padding: 8px 12px 10px 12px;
+	}
+
+	.app-frame {
+		gap: 10px;
+	}
+
+	.content-shell {
+		gap: 0;
+	}
+
+	.page-section {
+		gap: 0;
+	}
+
+	.topbar {
+		position: relative;
+		top: auto;
+		padding: 11px;
+		gap: 10px;
+		border-radius: 14px;
+	}
+
+	.topbar-main {
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 10px;
+		align-items: center;
+	}
+
+	.brand-block {
+		gap: 10px;
+		width: auto;
+		min-width: 0;
+	}
+
+	.brand-mark {
+		width: 44px;
+		height: 44px;
+		font-size: 0.9rem;
+		flex-shrink: 0;
+	}
+
+	.brand-block h1 {
+		font-size: 1.1rem;
+	}
+
+	.section-eyebrow {
+		font-size: 0.65rem;
+		letter-spacing: 0.1em;
+	}
+
+	.brand-title {
+		font-size: 1.35rem;
+		letter-spacing: 0.01em;
+	}
+
+	.search-shell {
+		min-width: unset;
+		width: 100%;
+		gap: 5px;
+		padding: 9px 12px;
+	}
+
+	.search-shell span,
+	.stack-form span,
+	.composer-input span {
+		font-size: 0.68rem;
+		letter-spacing: 0.08em;
+	}
+
+	.search-shell input,
+	.stack-form input {
+		font-size: 0.9rem;
+		padding: 10px 11px;
+	}
+
+	.nav-tabs {
+		gap: 15px;
+		padding-bottom: 0;
+	}
+
+	.nav-link {
+		width: 34px;
+		height: 34px;
+		font-size: 0.9rem;
+		border-radius: 12px;
+	}
+
+	.session-chip {
+		width: auto;
+		max-width: 100%;
+		justify-self: end;
+		padding: 9px 10px;
+	}
+
+	.session-avatar-image {
+		width: 38px;
+		height: 38px;
+		border-radius: 12px;
+	}
+
+	.session-meta strong {
+		font-size: 0.84rem;
+	}
+
+	.session-meta span {
+		font-size: 0.75rem;
+	}
+
+	.sync-pill,
+	.contact-tag,
+	.amount-pill {
+		padding: 5px 9px;
+		font-size: 0.62rem;
+	}
+
+	.panel {
+		padding: 14px;
+		gap: 11px;
+		border-radius: 14px;
+	}
+
+	.split-header {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 10px;
+	}
+
+	.split-header h2 {
+		font-size: 1.05rem;
+		margin: 0;
+	}
+
+	.avatar-badge {
+		width: 38px;
+		height: 38px;
+		border-radius: 12px;
+		font-size: 0.8rem;
+	}
+
+	.avatar-badge.xl {
+		width: 80px;
+		height: 80px;
+		border-radius: 20px;
+		font-size: 1.6rem;
+	}
+
+	.detail-grid {
+		grid-template-columns: 1fr;
+		gap: 11px;
+	}
+
+	.detail-grid dt {
+		font-size: 0.64rem;
+	}
+
+	.detail-grid dd {
+		font-size: 0.9rem;
+	}
+
+	.stat-card {
+		padding: 12px;
+		gap: 5px;
+	}
+
+	.stat-card h3 {
+		font-size: 1.5rem;
+	}
+
+	.stat-card p {
+		font-size: 0.8rem;
+	}
+
+	.stats-row {
+		gap: 10px;
+	}
+
+	.primary-button,
+	.secondary-button {
+		padding: 10px 13px;
+		font-size: 0.85rem;
+		border-radius: 10px;
+	}
+
+	.toggle-chip,
+	.ghost-button {
+		padding: 7px 11px;
+		font-size: 0.8rem;
+		border-radius: 10px;
+	}
+
+	.ghost-button.compact {
+		padding: 6px 9px;
+		font-size: 0.75rem;
+	}
+
+	.text-button {
+		font-size: 0.72rem;
+	}
+
+	.contact-card {
+		padding: 10px;
+		gap: 8px;
+		border-radius: 10px;
+	}
+
+	.contact-card strong {
+		font-size: 0.9rem;
+	}
+
+	.contact-card p {
+		font-size: 0.82rem;
+	}
+
+	.empty-state {
+		padding: 14px;
+		border-radius: 10px;
+	}
+
+	.empty-state h3 {
+		font-size: 0.95rem;
+	}
+
+	.empty-state p {
+		font-size: 0.82rem;
+	}
+
+	.assistant-panel {
+		padding: 14px;
+	}
+
+	.assistant-thread {
+		max-height: 280px;
+		gap: 8px;
+	}
+
+	.assistant-bubble {
+		padding: 10px 11px;
+		font-size: 0.85rem;
+		border-radius: 12px;
+	}
+
+	.assistant-bubble.user {
+		margin-right: 15px;
+	}
+
+	.assistant-bubble.assistant {
+		margin-right: 15px;
+	}
+
+	.feedback-copy {
+		padding: 9px 11px;
+		font-size: 0.85rem;
+		border-radius: 10px;
+	}
+}
+
+@media (max-width: 480px) {
+	:root {
+		font-size: 13px;
+	}
+
+	.app-shell {
+		padding: 8px 10px 8px 10px;
+	}
+
+	.app-frame {
+		gap: 8px;
+	}
+
+	.content-shell {
+		gap: 0;
+	}
+
+	.page-section {
+		gap: 0;
+	}
+
+	.topbar {
+		padding: 10px;
+		gap: 8px;
+		border-radius: 12px;
+	}
+
+	.topbar-main {
+		gap: 8px;
+	}
+
+	.brand-block {
+		gap: 8px;
+	}
+
+	.brand-mark {
+		width: 40px;
+		height: 40px;
+		font-size: 0.85rem;
+	}
+
+	.brand-block h1 {
+		font-size: 1rem;
+	}
+
+	.brand-title {
+		font-size: 1.2rem;
+	}
+
+	.brand-block p {
+		font-size: 0.65rem;
+	}
+
+	.search-shell {
+		padding: 8px 10px;
+		gap: 4px;
+	}
+
+	.search-shell span {
+		font-size: 0.6rem;
+	}
+
+	.search-shell input {
+		font-size: 0.85rem;
+		padding: 8px 10px;
+	}
+
+	.nav-tabs {
+		gap: 15px;
+		overflow-x: auto;
+	}
+
+	.nav-link {
+		width: 32px;
+		height: 32px;
+		font-size: 0.86rem;
+	}
+
+	.nav-icon svg {
+		width: 15px;
+		height: 15px;
+	}
+
+	.session-chip {
+		padding: 8px 9px;
+		gap: 6px;
+		justify-self: end;
+		width: auto;
+	}
+
+	.session-meta strong {
+		font-size: 0.8rem;
+	}
+
+	.session-meta span {
+		font-size: 0.7rem;
+	}
+
+	.panel {
+		padding: 12px;
+		gap: 10px;
+		border-radius: 12px;
+	}
+
+	.stat-card {
+		padding: 11px;
+		gap: 4px;
+	}
+
+	.stat-card h3 {
+		font-size: 1.3rem;
+	}
+
+	.primary-button,
+	.secondary-button {
+		padding: 9px 12px;
+		font-size: 0.8rem;
+	}
+
+	.toggle-chip,
+	.ghost-button {
+		padding: 6px 10px;
+		font-size: 0.75rem;
+	}
+
+	.contact-card {
+		padding: 9px;
+		gap: 8px;
+	}
+
+	input,
+	textarea,
+	select {
+		padding: 9px 10px;
+		font-size: 0.85rem;
+	}
+}

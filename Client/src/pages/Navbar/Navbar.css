@@ -1,0 +1,19 @@
+.topbar .brand-title {
+  text-transform: none;
+}
+
+.topbar .session-chip {
+  border-color: var(--line-soft);
+}
+
+@media (max-width: 768px) {
+  .topbar .brand-title {
+    font-size: 1.45rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .topbar .brand-title {
+    font-size: 1.22rem;
+  }
+}

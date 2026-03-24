@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { useAppContext } from '../context/AppContext.jsx'
-import { buildInitials, formatCurrency, formatDate, shortenId } from '../lib/formatters.js'
-import useAutoDismissFeedback from '../lib/useAutoDismissFeedback.js'
+import { useAppContext } from '../../context/AppContext.jsx'
+import { buildInitials, formatCurrency, formatDate, shortenId } from '../../lib/formatters.js'
+import useAutoDismissFeedback from '../../lib/useAutoDismissFeedback.js'
 import './ProfilePage.css'
 
 const MAX_PROFILE_IMAGE_BYTES = 900 * 1024

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { useAppContext } from '../context/AppContext.jsx'
-import useAutoDismissFeedback from '../lib/useAutoDismissFeedback.js'
+import { useAppContext } from '../../context/AppContext.jsx'
+import useAutoDismissFeedback from '../../lib/useAutoDismissFeedback.js'
 import './AIAssistantPage.css'
 
 function createLocalMessage(role, content) {

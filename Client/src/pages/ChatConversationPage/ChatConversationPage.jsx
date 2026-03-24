@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import ChatWindow from '../components/ChatWindow.jsx'
-import { useAppContext } from '../context/AppContext.jsx'
-import useAutoDismissFeedback from '../lib/useAutoDismissFeedback.js'
-import './HomePage.css'
+import ChatWindow from '../../components/ChatWindow/ChatWindow.jsx'
+import { useAppContext } from '../../context/AppContext.jsx'
+import useAutoDismissFeedback from '../../lib/useAutoDismissFeedback.js'
 import './ChatConversationPage.css'
 
 function ChatConversationPage() {
@@ -100,3 +99,4 @@ function ChatConversationPage() {
 }
 
 export default ChatConversationPage
+

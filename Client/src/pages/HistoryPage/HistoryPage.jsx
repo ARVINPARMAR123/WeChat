@@ -1,6 +1,6 @@
 import { useDeferredValue } from 'react'
-import { useAppContext } from '../context/AppContext.jsx'
-import { formatCurrency, formatDateTime } from '../lib/formatters.js'
+import { useAppContext } from '../../context/AppContext.jsx'
+import { formatCurrency, formatDateTime } from '../../lib/formatters.js'
 import './HistoryPage.css'
 
 function HistoryPage() {

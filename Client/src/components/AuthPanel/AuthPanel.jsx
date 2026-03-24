@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import { useAppContext } from '../context/AppContext.jsx'
-import { shortenId } from '../lib/formatters.js'
-import useAutoDismissFeedback from '../lib/useAutoDismissFeedback.js'
+import { useAppContext } from '../../context/AppContext.jsx'
+import { shortenId } from '../../lib/formatters.js'
+import useAutoDismissFeedback from '../../lib/useAutoDismissFeedback.js'
+import './AuthPanel.css'
 
 const INITIAL_FORM = {
   username: '',

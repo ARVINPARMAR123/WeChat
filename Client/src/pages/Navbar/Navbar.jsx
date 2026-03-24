@@ -1,6 +1,7 @@
 import { NavLink, Outlet } from 'react-router-dom'
-import { useAppContext } from '../context/AppContext.jsx'
-import { buildInitials } from '../lib/formatters.js'
+import { useAppContext } from '../../context/AppContext.jsx'
+import { buildInitials } from '../../lib/formatters.js'
+import './navbar.css'
 
 const NAV_ITEMS = [
   { to: '/home', label: 'Home', icon: 'home' },
@@ -70,9 +71,8 @@ function Navbar() {
         <header className="topbar">
           <div className="topbar-main">
             <div className="brand-block">
-              <div className="brand-mark">WC</div>
               <div>
-                <h1 className="section-eyebrow">WeChat</h1>
+                <h1 className="brand-title">WeChat</h1>
               </div>
             </div>
 

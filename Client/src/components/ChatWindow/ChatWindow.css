@@ -1,0 +1,9 @@
+/* ChatWindow component styles */
+
+.chat-window .feedback-copy {
+	margin-top: 2px;
+}
+
+.chat-window .error-text {
+	display: inline-block;
+}

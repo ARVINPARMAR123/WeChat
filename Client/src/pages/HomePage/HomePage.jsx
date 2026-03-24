@@ -1,8 +1,8 @@
 import { useDeferredValue, useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useAppContext } from '../context/AppContext.jsx'
-import { buildInitials, formatTime, shortenId } from '../lib/formatters.js'
-import useAutoDismissFeedback from '../lib/useAutoDismissFeedback.js'
+import { useAppContext } from '../../context/AppContext.jsx'
+import { buildInitials, formatTime, shortenId } from '../../lib/formatters.js'
+import useAutoDismissFeedback from '../../lib/useAutoDismissFeedback.js'
 import './HomePage.css'
 
 function HomePage() {
@@ -205,3 +205,4 @@ function HomePage() {
 }
 
 export default HomePage
+
