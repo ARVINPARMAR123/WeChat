@@ -1,0 +1,93 @@
+/* PaymentsPage Specific Styles */
+
+.payments-grid {
+	grid-template-columns: 1.05fr 1fr;
+}
+
+.payment-form-panel {
+	align-content: start;
+}
+
+.payment-stats {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 12px;
+}
+
+.transaction-list-panel {
+	grid-column: 1 / -1;
+	align-content: start;
+}
+
+.transaction-list-panel h2 {
+	margin: 3px 0 0;
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: 1.15rem;
+	font-weight: 600;
+	color: var(--text);
+}
+
+.amount-pill {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 6px 10px;
+	border-radius: 999px;
+	font-size: 0.68rem;
+	font-weight: 800;
+	letter-spacing: 0.09em;
+	text-transform: uppercase;
+	border: 1px solid transparent;
+}
+
+.amount-pill.outgoing {
+	background: rgba(255, 115, 128, 0.14);
+	border-color: rgba(255, 115, 128, 0.3);
+	color: #ffc4cc;
+}
+
+.amount-pill.incoming {
+	background: rgba(69, 213, 152, 0.15);
+	border-color: rgba(69, 213, 152, 0.34);
+	color: #9df4cb;
+}
+
+/* PaymentsPage Responsive Design */
+@media (max-width: 1280px) {
+	.payments-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.transaction-list-panel {
+		grid-column: auto;
+	}
+}
+
+@media (max-width: 900px) {
+	.payment-stats {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 768px) {
+	.payments-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.payment-stats {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 640px) {
+	.amount-pill {
+		padding: 5px 9px;
+		font-size: 0.62rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.payment-stats {
+		gap: 10px;
+	}
+}

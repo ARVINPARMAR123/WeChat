@@ -1,0 +1,141 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("MONGODB_URL")
+}
+
+model User {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  username       String   @unique
+  email          String   @unique
+  password       String
+  displayName    String?
+  about          String?
+  statusLine     String?
+  accent         String?
+  city           String?
+  phone          String?
+  profilePicture String?
+  friends        String[] @db.ObjectId
+  friendRequests String[] @db.ObjectId
+  sentRequests   String[] @db.ObjectId
+  online         Boolean  @default(false)
+  walletBalance  Float    @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Message {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  senderId    String   @db.ObjectId
+  recipientId String   @db.ObjectId
+  message     String
+  mediaType   String?  // "image", "video", or "audio"
+  mediaUrl    String?
+  deletedForUserIds String[] @db.ObjectId
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([senderId])
+  @@index([recipientId])
+  @@index([createdAt])
+}
+
+model Transaction {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  senderId    String   @db.ObjectId
+  recipientId String   @db.ObjectId
+  amount      Float
+  note        String?
+  status      String   @default("pending")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([senderId])
+  @@index([recipientId])
+  @@index([createdAt])
+}
+
+model Story {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  authorId  String   @db.ObjectId
+  title     String
+  content   String?
+  mediaType String?  // "image", "video", or "audio"
+  mediaUrl  String?
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+  viewers   Viewer[]
+
+  @@index([authorId])
+  @@index([createdAt])
+  @@index([expiresAt])
+}
+
+model Viewer {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  storyId   String   @db.ObjectId
+  userId    String   @db.ObjectId
+  viewedAt  DateTime @default(now())
+  story     Story    @relation(fields: [storyId], references: [id], onDelete: Cascade)
+
+  @@unique([storyId, userId])
+  @@index([storyId])
+  @@index([userId])
+}
+
+model Post {
+  id        String         @id @default(auto()) @map("_id") @db.ObjectId
+  authorId  String         @db.ObjectId
+  content   String?
+  mediaType String?         // "image", "video", or "audio"
+  mediaUrl  String?
+  createdAt DateTime       @default(now())
+  likes     PostLike[]
+  reactions PostReaction[]
+  replies   PostReply[]
+
+  @@index([authorId])
+  @@index([createdAt])
+}
+
+model PostLike {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  postId    String   @db.ObjectId
+  userId    String   @db.ObjectId
+  createdAt DateTime @default(now())
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@unique([postId, userId])
+  @@index([postId])
+  @@index([userId])
+}
+
+model PostReaction {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  postId    String   @db.ObjectId
+  userId    String   @db.ObjectId
+  emoji     String
+  createdAt DateTime @default(now())
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@unique([postId, userId, emoji])
+  @@index([postId])
+  @@index([userId])
+}
+
+model PostReply {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  postId    String   @db.ObjectId
+  authorId  String   @db.ObjectId
+  content   String
+  createdAt DateTime @default(now())
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@index([postId])
+  @@index([authorId])
+  @@index([createdAt])
+}
