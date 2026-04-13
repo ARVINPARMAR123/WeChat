@@ -1,5 +1,13 @@
 .topbar .brand-title {
   text-transform: none;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  background: linear-gradient(125deg, #63f0b0 0%, #58d6ff 45%, #b3fff2 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 10px 22px rgba(88, 214, 255, 0.25);
 }
 
 .topbar .session-chip {
@@ -9,11 +17,13 @@
 @media (max-width: 768px) {
   .topbar .brand-title {
     font-size: 1.45rem;
+    letter-spacing: 0.02em;
   }
 }
 
 @media (max-width: 480px) {
   .topbar .brand-title {
     font-size: 1.22rem;
+    text-shadow: 0 8px 18px rgba(88, 214, 255, 0.2);
   }
 }

@@ -513,8 +513,71 @@ function StatusPage() {
           <span className="contact-tag">24h</span>
         </div>
 
+        <div className="story-strip" role="list">
+          {!currentUserStory ? (
+            <button
+              type="button"
+              className="story-pill story-upload-pill"
+              onClick={() => storyMediaInputRef.current?.click()}
+              title="Upload your story"
+            >
+              <span className="story-pill-avatar story-upload-avatar">
+                {currentUserProfilePicture ? (
+                  <img src={currentUserProfilePicture} alt={`${currentUserLabel} profile`} className="story-pill-thumb" />
+                ) : (
+                  <span className="story-pill-fallback">{getNameAvatarText(currentUserLabel, 'Y')}</span>
+                )}
+                <span className="story-upload-plus-badge">+</span>
+              </span>
+              <span className="story-pill-name">{currentUserLabel}</span>
+            </button>
+          ) : (
+            <button
+              type="button"
+              className={`story-pill story-user-pill ${selectedStory?.id === currentUserStory.id ? 'active' : ''}`}
+              onClick={() => void handleStoryOpen(currentUserStory)}
+            >
+              <span className="story-pill-avatar">
+                {currentUserStory.mediaType === 'image' && currentUserStory.mediaUrl ? (
+                  <img src={currentUserStory.mediaUrl} alt="Your story" className="story-pill-thumb" />
+                ) : currentUserProfilePicture ? (
+                  <img src={currentUserProfilePicture} alt={`${currentUserLabel} profile`} className="story-pill-thumb" />
+                ) : (
+                  <span className="story-pill-fallback">{getNameAvatarText(currentUserLabel, 'Y')}</span>
+                )}
+              </span>
+              <span className="story-pill-name">{currentUserLabel}</span>
+            </button>
+          )}
+          {otherUsersStories.map((story) => {
+            const storyAuthorName = resolveNameById(story.authorId, 'Contact')
+            const storyAuthorProfilePicture = resolveProfilePictureById(story.authorId)
+
+            return (
+              <button
+                type="button"
+                key={story.id}
+                className={`story-pill ${selectedStory?.id === story.id ? 'active' : ''}`}
+                onClick={() => void handleStoryOpen(story)}
+              >
+                <span className="story-pill-avatar">
+                  {story.mediaType === 'image' && story.mediaUrl ? (
+                    <img src={story.mediaUrl} alt={story.title || 'Story'} className="story-pill-thumb" />
+                  ) : storyAuthorProfilePicture ? (
+                    <img src={storyAuthorProfilePicture} alt={`${storyAuthorName} profile`} className="story-pill-thumb" />
+                  ) : (
+                    <span className="story-pill-fallback">{getNameAvatarText(storyAuthorName, 'S')}</span>
+                  )}
+                </span>
+                <span className="story-pill-name">{storyAuthorName}</span>
+              </button>
+            )
+          })}
+        </div>
+
         <form className="stack-form status-upload-form" onSubmit={handleStorySubmit}>
           <label>
+            <h4>Upload New Status</h4>
             <span>Status caption</span>
             <textarea
               name="content"
@@ -557,71 +620,7 @@ function StatusPage() {
         </form>
 
         {storyFeedback ? <p className="feedback-copy">{storyFeedback}</p> : null}
-
-        <>
-          <div className="story-strip" role="list">
-            {!currentUserStory ? (
-              <button
-                type="button"
-                className="story-pill story-upload-pill"
-                onClick={() => storyMediaInputRef.current?.click()}
-                title="Upload your story"
-              >
-                <span className="story-pill-avatar story-upload-avatar">
-                  {currentUserProfilePicture ? (
-                    <img src={currentUserProfilePicture} alt={`${currentUserLabel} profile`} className="story-pill-thumb" />
-                  ) : (
-                    <span className="story-pill-fallback">{getNameAvatarText(currentUserLabel, 'Y')}</span>
-                  )}
-                  <span className="story-upload-plus-badge">+</span>
-                </span>
-                <span className="story-pill-name">{currentUserLabel}</span>
-              </button>
-            ) : (
-              <button
-                type="button"
-                className={`story-pill story-user-pill ${selectedStory?.id === currentUserStory.id ? 'active' : ''}`}
-                onClick={() => void handleStoryOpen(currentUserStory)}
-              >
-                <span className="story-pill-avatar">
-                  {currentUserStory.mediaType === 'image' && currentUserStory.mediaUrl ? (
-                    <img src={currentUserStory.mediaUrl} alt="Your story" className="story-pill-thumb" />
-                  ) : currentUserProfilePicture ? (
-                    <img src={currentUserProfilePicture} alt={`${currentUserLabel} profile`} className="story-pill-thumb" />
-                  ) : (
-                    <span className="story-pill-fallback">{getNameAvatarText(currentUserLabel, 'Y')}</span>
-                  )}
-                </span>
-                <span className="story-pill-name">{currentUserLabel}</span>
-              </button>
-            )}
-            {otherUsersStories.map((story) => {
-              const storyAuthorName = resolveNameById(story.authorId, 'Contact')
-              const storyAuthorProfilePicture = resolveProfilePictureById(story.authorId)
-
-              return (
-                <button
-                  type="button"
-                  key={story.id}
-                  className={`story-pill ${selectedStory?.id === story.id ? 'active' : ''}`}
-                  onClick={() => void handleStoryOpen(story)}
-                >
-                  <span className="story-pill-avatar">
-                    {story.mediaType === 'image' && story.mediaUrl ? (
-                      <img src={story.mediaUrl} alt={story.title || 'Story'} className="story-pill-thumb" />
-                    ) : storyAuthorProfilePicture ? (
-                      <img src={storyAuthorProfilePicture} alt={`${storyAuthorName} profile`} className="story-pill-thumb" />
-                    ) : (
-                      <span className="story-pill-fallback">{getNameAvatarText(storyAuthorName, 'S')}</span>
-                    )}
-                  </span>
-                  <span className="story-pill-name">{storyAuthorName}</span>
-                </button>
-              )
-            })}
-          </div>
-
-          {storyCardStory ? (
+        {storyCardStory ? (
             <article className="status-card story-selected-card story-fullscreen-card">
               {(() => {
                 const storyAuthorName = resolveNameById(storyCardStory.authorId, 'User')
@@ -690,7 +689,6 @@ function StatusPage() {
               )}
             </article>
           ) : null}
-        </>
       </section>
 
       <section className="panel status-posts-panel">

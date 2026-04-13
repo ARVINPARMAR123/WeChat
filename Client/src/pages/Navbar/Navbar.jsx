@@ -21,8 +21,12 @@ const NAV_ICONS = {
   ),
   status: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M4 17h4l2-4 3 6 2-4h5" />
-      <path d="M4 7h16" />
+      <circle cx="12" cy="12" r="3.5" />
+      <circle cx="12" cy="12" r="6.5" />
+      <path d="M12 2.5a9.5 9.5 0 0 1 6.72 2.78" />
+      <path d="M21.5 12a9.5 9.5 0 0 1-2.78 6.72" />
+      <path d="M12 21.5a9.5 9.5 0 0 1-6.72-2.78" />
+      <circle cx="3.3" cy="12.9" r="0.7" fill="currentColor" stroke="none" />
     </svg>
   ),
   payments: (
